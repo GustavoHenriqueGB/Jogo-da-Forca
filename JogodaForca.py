@@ -25,18 +25,41 @@ def jogo():
     print("\nBem vindo ao jogo da forca!!!")
     print("Adivinhe a palavra abaixo: \n")
 
-    #Lista de palavras para o jogo
+    # Lista de palavras para o jogo
     carros_japoneses = [
-        "Civic", "Corolla", "Lancer", "Skyline", "Supra",  
-        "Miata", "Impreza", "RX7", "Silvia", "Evo",  
-        "350Z", "Celica", "Outback", "Forester", "NSX",  
-        "GT86", "BRZ", "CRX", "Accord", "Legacy"
+        "civic", "corolla", "lancer", "skyline", "supra",  
+        "miata", "impreza", "rx7", "silvia", "evo",  
+        "350z", "celica", "outback", "forester", "nsx",  
+        "gt86", "brz", "crx", "accord", "legacy"
     ]
 
-    #Escolhe uma palavra aleatoriamente
+    # Escolhe uma palavra aleatoriamente
     palavra = random.choice(carros_japoneses)
-    print('-' * len(palavra), end='\n')
 
+    letras_descobertas = ['_' * len(palavra)]
 
+    # Número de chances
+    tentativas =  8
+
+    # Lista de letras erradas
+    letras_erradas = []
+
+    while tentativas > 0:
+
+        # Print
+        print(" ".join(letras_descobertas))
+        print("\nChances restantes:", tentativas)
+        print("Letras erradas:", " ".join(letras_erradas))
+
+        # Tentativa
+        tentativa = input("Digite uma letra: ").lower()
+
+        if tentativa in palavra:
+            for i in range(len(palavra)):
+                if palavra[i] == tentativa:
+                    letras_descobertas[i] = tentativa
+        else:
+            
+            tentativas -= 1
+            letras_erradas.append(tentativa)
 # Programa principal:
-print('- '* 8, end='\n')
