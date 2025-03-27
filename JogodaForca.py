@@ -23,7 +23,7 @@ def jogo():
     limpaTela()
 
     print("\nBem vindo ao jogo da forca!!!")
-    print("Adivinhe a palavra abaixo:")
+    print("Adivinhe a palavra abaixo: \n")
 
     #Lista de palavras para o jogo
     carros_japoneses = [
@@ -33,8 +33,10 @@ def jogo():
         "GT86", "BRZ", "CRX", "Accord", "Legacy"
     ]
 
-# Programa principal:        
-acabou = False
+    #Escolhe uma palavra aleatoriamente
+    palavra = random.choice(carros_japoneses)
+    print('-' * len(palavra), end='\n')
 
 
-while(acabou):
+# Programa principal:
+print('- '* 8, end='\n')
