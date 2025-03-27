@@ -28,10 +28,10 @@ def jogo():
 
     # Lista de palavras para o jogo
     carros_japoneses = [
-        "civic", "corolla", "lancer", "skyline", "supra",  
-        "miata", "impreza", "rx7", "silvia", "evo",  
-        "350z", "celica", "outback", "forester", "nsx",  
-        "gt86", "brz", "crx", "accord", "legacy"
+         "civic", "corolla", "lancer", "skyline", "supra",  
+        "miata", "impreza", "silvia", "evo", "celica",  
+        "outback", "forester", "nsx", "brz", "crx",  
+        "accord", "legacy"
     ]
 
     # Escolhe uma palavra aleatoriamente
