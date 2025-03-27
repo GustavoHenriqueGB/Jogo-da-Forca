@@ -23,6 +23,7 @@ def jogo():
     limpaTela()
 
     print("\nBem vindo ao jogo da forca!!!")
+    print("Dica: É um carro japônes")
     print("Adivinhe a palavra abaixo: \n")
 
     # Lista de palavras para o jogo
@@ -36,7 +37,7 @@ def jogo():
     # Escolhe uma palavra aleatoriamente
     palavra = random.choice(carros_japoneses)
 
-    letras_descobertas = ['_' * len(palavra)]
+    letras_descobertas = ['_' for letra in palavra]
 
     # Número de chances
     tentativas =  8
@@ -59,7 +60,20 @@ def jogo():
                 if palavra[i] == tentativa:
                     letras_descobertas[i] = tentativa
         else:
-            
             tentativas -= 1
             letras_erradas.append(tentativa)
+
+        # Checagem de vitória
+        if "_" not in letras_descobertas:
+            print("\n Você venceu!!!  ;)")
+            print("A palavra era:", palavra)
+            break
+    
+    # Checagem de derrota
+    if "_" in letras_descobertas:
+        print("\nVocê perdeu!!! :(")
+        print("A palavra era:", palavra)
+        
 # Programa principal:
+if __name__ == "__main__":
+    jogo()
