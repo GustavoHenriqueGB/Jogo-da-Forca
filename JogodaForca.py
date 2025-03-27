@@ -7,6 +7,90 @@ from os import system, name
 
 #Funções:
 
+# Função para mostrar o boneco na tela
+def boneco(chances):
+    # Lista de estágios da forca
+    estagios = [
+        # Estágio 6 (final)
+        '''
+            -------
+            |     |
+            |     0
+            |    \\|/
+            |     |
+            |    / \\
+            |
+            -
+        ''',
+        # Estágio 5
+        '''
+            -------
+            |     |
+            |     0
+            |    \\|/
+            |     |
+            |    / 
+            |
+            -
+        ''',
+        # Estágio 4
+        '''
+            -------
+            |     |
+            |     0
+            |    \\|/
+            |     |
+            |    
+            |
+            -
+        ''',
+        # Estágio 3
+        '''
+            -------
+            |     |
+            |     0
+            |    \\|/
+            |    
+            |     
+            |
+            -
+        ''',
+        # Estágio 2
+        '''
+            -------
+            |     |
+            |     0
+            |    \\|
+            |    
+            |    
+            |
+            -
+        ''',
+        # Estágio 1
+        '''
+            -------
+            |     |
+            |     0
+            |   
+            |    
+            |    
+            |
+            -
+        ''',
+        # Estágio 0 (inicial)
+        '''
+            -------
+            |     |
+            |     
+            |   
+            |    
+            |    
+            |
+            -
+        '''
+    ]
+    return estagios[chances] 
+
 # Função para limpar a tela a cada execução
 def limpaTela():
     
@@ -28,7 +112,7 @@ def jogo():
 
     # Lista de palavras para o jogo
     carros_japoneses = [
-         "civic", "corolla", "lancer", "skyline", "supra",  
+        "civic", "corolla", "lancer", "skyline", "supra",  
         "miata", "impreza", "silvia", "evo", "celica",  
         "outback", "forester", "nsx", "brz", "crx",  
         "accord", "legacy"
@@ -37,10 +121,14 @@ def jogo():
     # Escolhe uma palavra aleatoriamente
     palavra = random.choice(carros_japoneses)
 
-    letras_descobertas = ['_' for letra in palavra]
+    # Lista de letras da palavra
+    lista_letras_palavra = [letra for letra in palavra]
+
+    # Cria o tabuleiro
+    letras_descobertas = ['_'] * len(palavra)
 
     # Número de chances
-    tentativas =  8
+    tentativas =  6
 
     # Lista de letras erradas
     letras_erradas = []
@@ -51,14 +139,22 @@ def jogo():
         print(" ".join(letras_descobertas))
         print("\nChances restantes:", tentativas)
         print("Letras erradas:", " ".join(letras_erradas))
+        print(boneco(tentativas))
 
         # Tentativa
         tentativa = input("Digite uma letra: ").lower()
 
         if tentativa in palavra:
+            print("\nVocê acertou a letra!")
+
             for i in range(len(palavra)):
                 if palavra[i] == tentativa:
                     letras_descobertas[i] = tentativa
+        
+        elif tentativa in letras_erradas or tentativa in letras_descobertas:
+            print("\nEssa letra já foi tentada antes!")
+            print("Tente outra letra.")
+            
         else:
             tentativas -= 1
             letras_erradas.append(tentativa)
